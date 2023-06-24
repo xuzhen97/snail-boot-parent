@@ -1,6 +1,7 @@
 package fun.easycode.snail.boot.autoconfigure;
 
 import fun.easycode.snail.boot.core.*;
+import fun.easycode.snail.boot.util.ClassUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
@@ -55,11 +56,17 @@ public class SnailBootWebAutoConfiguration implements WebMvcConfigurer, Jackson2
     @Override
     public void customize(Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder) {
         // 配置枚举自定义序列化规则，必须继承Enumerator接口
-        // TODO 反序列化需要自己使用注解，或者指定全局的具体类型，这里配置不好使
-//        jacksonObjectMapperBuilder.deserializerByType(Enumerator.class, new EnumeratorDeserializer());
+        // 反序列化需要自己使用注解，或者指定全局的具体类型，这里配置不好使, 然后就是这里的配置不好使，只能用下面的方法
+        // jacksonObjectMapperBuilder.deserializerByType(Enumerator.class, new EnumeratorDeserializer());
+        ClassUtil.getInterfaceImpls(Enumerator.class).forEach(clazz -> {
+            jacksonObjectMapperBuilder.deserializerByType(clazz, new EnumeratorDeserializer());
+        });
         jacksonObjectMapperBuilder.serializerByType(Enumerator.class, new EnumeratorSerializer());
         // 配置LocalDateTime规则，时间戳
         jacksonObjectMapperBuilder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
         jacksonObjectMapperBuilder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer());
+
+
     }
+    
 }
