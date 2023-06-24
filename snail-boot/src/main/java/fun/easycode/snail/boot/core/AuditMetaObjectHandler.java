@@ -23,26 +23,26 @@ public class AuditMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         LocalDateTime now = LocalDateTime.now();
-        this.strictInsertFill(metaObject, "createTime", ()-> now, LocalDateTime.class);
-        this.strictInsertFill(metaObject, "createBy",UserHolder.getInstance().getLoginUser()::getId, String.class);
-        this.strictInsertFill(metaObject, "updateTime", ()-> now, LocalDateTime.class);
-        this.strictInsertFill(metaObject, "updateBy", UserHolder.getInstance().getLoginUser()::getId, String.class);
+        this.strictInsertFill(metaObject, "createdTime", ()-> now, LocalDateTime.class);
+        this.strictInsertFill(metaObject, "createdBy",UserHolder.getInstance().getLoginUser()::getId, String.class);
+        this.strictInsertFill(metaObject, "updatedTime", ()-> now, LocalDateTime.class);
+        this.strictInsertFill(metaObject, "updatedBy", UserHolder.getInstance().getLoginUser()::getId, String.class);
 
         // 兼容date
         Date nowDate = new Date();
-        this.strictInsertFill(metaObject, "createTime", Date.class, nowDate);
-        this.strictInsertFill(metaObject, "updateTime", Date.class, nowDate);
+        this.strictInsertFill(metaObject, "createdTime", Date.class, nowDate);
+        this.strictInsertFill(metaObject, "updatedTime", Date.class, nowDate);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         LocalDateTime now = LocalDateTime.now();
-        this.strictUpdateFill(metaObject, "updateTime", () -> now, LocalDateTime.class);
-        this.strictUpdateFill(metaObject, "updateBy", UserHolder.getInstance().getLoginUser()::getId, String.class);
+        this.strictUpdateFill(metaObject, "updatedTime", () -> now, LocalDateTime.class);
+        this.strictUpdateFill(metaObject, "updatedBy", UserHolder.getInstance().getLoginUser()::getId, String.class);
 
         // 兼容date
         Date nowDate = new Date();
-        this.strictUpdateFill(metaObject, "updateTime", Date.class, nowDate);
+        this.strictUpdateFill(metaObject, "updatedTime", Date.class, nowDate);
     }
 
     /**
