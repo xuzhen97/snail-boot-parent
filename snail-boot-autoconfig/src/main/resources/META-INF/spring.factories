@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+fun.easycode.snail.boot.autoconfigure.SnailBootAutoConfiguration, \
+fun.easycode.snail.boot.autoconfigure.SnailBootWebAutoConfiguration
