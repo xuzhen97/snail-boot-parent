@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.baomidou.mybatisplus.generator.util.ClassUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -18,6 +19,9 @@ import java.util.regex.Matcher;
  * @author xuzhe
  */
 public class SnailBootFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
+
+    private static final String SUPER_MAPPER_CLASS_PACKAGE = "fun.easycode.snail.boot.core.SnailBootMapper";
+
     @Override
     public @NotNull AbstractTemplateEngine batchOutput() {
         try {
@@ -32,6 +36,11 @@ public class SnailBootFreemarkerTemplateEngine extends FreemarkerTemplateEngine 
                 });
                 // entity
                 outputEntity(tableInfo, objectMap);
+
+                // overwrite BaseMapper
+                objectMap.put("superMapperClassPackage", SUPER_MAPPER_CLASS_PACKAGE);
+                objectMap.put("superMapperClass", ClassUtils.getSimpleName(SUPER_MAPPER_CLASS_PACKAGE));
+
                 // mapper and xml
                 outputMapper(tableInfo, objectMap);
                 // repository

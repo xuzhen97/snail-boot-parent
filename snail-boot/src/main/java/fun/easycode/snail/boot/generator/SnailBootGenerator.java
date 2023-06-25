@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 
 /**
  * 定义的统一格式的代码生成器
- * @author xuzhe
+ * @author xuzhen97
  */
 public final class SnailBootGenerator {
 
@@ -56,10 +56,10 @@ public final class SnailBootGenerator {
                             .enableRemoveIsPrefix() // 去除boolean类型数据的is_前缀
                             .enableTableFieldAnnotation()
                             .logicDeleteColumnName("is_deleted")
-                            .addTableFills(new Column("create_by", FieldFill.INSERT)
-                                    , new Column("update_by", FieldFill.INSERT_UPDATE)
-                                    , new Column("create_time", FieldFill.INSERT)
-                                    , new Column("update_time", FieldFill.INSERT_UPDATE));
+                            .addTableFills(new Column("created_by", FieldFill.INSERT)
+                                    , new Column("updated_by", FieldFill.INSERT_UPDATE)
+                                    , new Column("created_time", FieldFill.INSERT)
+                                    , new Column("updated_time", FieldFill.INSERT_UPDATE));
 
                     // 只有表的前缀有值的时候才进行设置
                     if(!StringUtils.isEmpty(generatorConfig.getTablePrefix())){
