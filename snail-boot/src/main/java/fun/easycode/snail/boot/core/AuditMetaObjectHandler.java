@@ -13,11 +13,11 @@ import java.util.function.Supplier;
 
 /**
  * mybatis plus 审计信息
- * createdDate
+ * createdTime
  * createdBy
- * lastModifiedDate
- * lastModifiedBy
- * @author xuzhe
+ * updatedTime
+ * updatedBy
+ * @author xuzhen97
  */
 public class AuditMetaObjectHandler implements MetaObjectHandler {
     @Override

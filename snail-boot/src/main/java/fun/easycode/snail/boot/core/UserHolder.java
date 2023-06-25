@@ -18,7 +18,7 @@ public abstract class UserHolder<T extends UserInfo> implements ApplicationConte
      * 获取UserHolder实例
      * @return UserHolder
      */
-    public static UserHolder getInstance(){
+    public static <T extends UserInfo> UserHolder<T> getInstance(){
         return context.getBean(UserHolder.class);
     }
 
@@ -49,7 +49,7 @@ public abstract class UserHolder<T extends UserInfo> implements ApplicationConte
     public static class DefaultUserHolder extends UserHolder{
         @Override
         public UserInfo getLoginUser() {
-            return () -> "jointblock";
+            return () -> "snail-boot";
         }
     }
 }

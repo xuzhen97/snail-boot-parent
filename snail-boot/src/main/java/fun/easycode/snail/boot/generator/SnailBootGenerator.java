@@ -35,7 +35,7 @@ public final class SnailBootGenerator {
         }else{
             pack = generatorConfig.getParentPackage() + "."+ generatorConfig.getModuleName() + ".dao";
         }
-        String mapperXmlFolder = mavenJavaFolder + File.separator + pack.replaceAll("\\.", Matcher.quoteReplacement(File.separator));;
+        String mapperXmlFolder = mavenJavaFolder + File.separator + pack.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
 
         FastAutoGenerator.create(generatorConfig.getUrl() , generatorConfig.getUsername(), generatorConfig.getPassword())
                 .globalConfig(builder -> {
