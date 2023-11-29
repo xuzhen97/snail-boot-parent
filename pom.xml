@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>fun.easycode.snail</groupId>
+    <groupId>fun.easycode.snail-cloud</groupId>
     <artifactId>snail-boot-parent</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
@@ -23,9 +23,9 @@
     </modules>
 
     <scm>
-        <url>https://codeup.aliyun.com/5fedd14d578739320804fd88/snail/snail-boot-parent</url>
-        <connection>scm:git:https://codeup.aliyun.com/5fedd14d578739320804fd88/snail/snail-boot-parent.git</connection>
-        <developerConnection>scm:git:git@codeup.aliyun.com:5fedd14d578739320804fd88/snail/snail-boot-parent.git</developerConnection>
+        <url>https://codeup.aliyun.com/5fedd14d578739320804fd88/snail-cloud/snail-boot-parent</url>
+        <connection>scm:git:https://codeup.aliyun.com/5fedd14d578739320804fd88/snail-cloud/snail-boot-parent.git</connection>
+        <developerConnection>scm:git:git@codeup.aliyun.com:5fedd14d578739320804fd88/snail-cloud/snail-boot-parent.git</developerConnection>
     </scm>
 
     <properties>
