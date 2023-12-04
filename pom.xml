@@ -17,8 +17,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>snail-boot</module>
-        <module>snail-boot-autoconfig</module>
         <module>snail-boot-starter</module>
+        <module>snail-boot-autoconfig</module>
         <module>snail-boot-test</module>
     </modules>
 
