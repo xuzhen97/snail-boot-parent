@@ -24,6 +24,11 @@ public class ClassUtil {
             if (target.isInterface()) {
                 String basePackage = target.getClassLoader().getResource("").getPath();
                 File[] files = new File(basePackage).listFiles();
+
+                if(files == null){
+                    return Collections.emptyList();
+                }
+
                 // 存放class路径的list
                 ArrayList<String> classpaths = new ArrayList<>();
                 for (File file : files) {
