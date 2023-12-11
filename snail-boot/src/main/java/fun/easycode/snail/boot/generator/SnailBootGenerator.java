@@ -10,7 +10,6 @@ import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.util.Collections;
-import java.util.regex.Matcher;
 
 /**
  * 定义的统一格式的代码生成器
@@ -28,14 +27,19 @@ public final class SnailBootGenerator {
         String projectPath = System.getProperty("user.dir");
 
         String mavenJavaFolder = String.join(File.separator,"src","main","java");
+        String mavenResourceFolder = String.join(File.separator,"src","main","resources");
+
         // pack 要根据moduleName是否存在来生成
         String pack;
+        String mapperXmlFolder;
+
         if(StringUtils.isEmpty(generatorConfig.getModuleName())){
             pack = generatorConfig.getParentPackage() + ".dao";
+            mapperXmlFolder = mavenResourceFolder + File.separator + "mapper";
         }else{
-            pack = generatorConfig.getParentPackage() + "."+ generatorConfig.getModuleName() + ".dao";
+            pack = generatorConfig.getParentPackage() + "." + generatorConfig.getModuleName() + ".dao";
+            mapperXmlFolder = mavenResourceFolder + File.separator + generatorConfig.getModuleName() + File.separator + "mapper";
         }
-        String mapperXmlFolder = mavenJavaFolder + File.separator + pack.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
 
         FastAutoGenerator.create(generatorConfig.getUrl() , generatorConfig.getUsername(), generatorConfig.getPassword())
                 .globalConfig(builder -> {
