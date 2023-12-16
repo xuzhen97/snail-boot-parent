@@ -1,3 +1,6 @@
+## 1.3.1-SNAPSHOT
+- fix: pom.xml
+
 ## 1.3.0-SNAPSHOT
 - refactor: CheckException 删除无用的方法，取消ErrorDto, 更换成R对象，统一正确和错误的接口返回值。
 
